@@ -1,0 +1,10 @@
+{
+    "name": "gallery-dimensions-converter",
+    "builds": {
+        "gallery-dimensions-converter": {
+            "jsfiles": [
+                "js/gallery-dimensions-converter.js"
+            ]
+        }
+    }
+}

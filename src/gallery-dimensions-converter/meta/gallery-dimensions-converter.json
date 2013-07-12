@@ -1,0 +1,7 @@
+{
+    "gallery-dimensions-converter": {
+        "requires": [
+            "yui-base"
+        ]
+    }
+}

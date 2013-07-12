@@ -1,0 +1,11 @@
+{
+    "name"       : "gallery-dimensions-converter",
+    "displayName": "Gallery: gallery-dimensions-converter",
+    "description": "*Summary Goes Here*",
+    "author"     : [ "kenjiru" ],
+    "use"        : [ "gallery-dimensions-converter" ],
+
+    "tags": [ "gallery" ],
+
+    "examples": []
+}
