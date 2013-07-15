@@ -1,21 +1,12 @@
 var Dimension = function(value) {
-    var vNumber = value.slice(0, -2),
-        vUnit = value.slice(-2);
-
-    if (!this._isUnitSupported(vUnit)) {
-        throw new Error('unit not supported!');
-    }
-
-    if (!this._isNumber(vNumber)) {
-        throw new Error('value is not a number!');
-    }
+    var unit = value.slice(-2);
 
     if (!Dimension._unitValues) {
         Dimension._unitValues = Dimension._calculateDimensions();
     }
 
     this._value = value;
-    this._unit = vUnit;
+    this._unit = unit;
     this._pixels = this._toPixels(value);
 };
 
@@ -98,6 +89,14 @@ Y.mix(Dimension.prototype, {
     _toPixels : function(value) {
         var vNumber = value.slice(0, -2),
             vUnit = value.slice(-2);
+
+        if (!this._isUnitSupported(vUnit)) {
+            throw new Error('unit not supported!');
+        }
+
+        if (!this._isNumber(vNumber)) {
+            throw new Error('value is not a number!');
+        }
 
         if (vUnit == 'px'){
             return vNumber;
