@@ -12,7 +12,7 @@ var Dimension = function(value) {
 
 // static methods
 Y.mix(Dimension, {
-    _supportedUnits : [ 'mm', 'cm', 'in' ,'pt' ],
+    _supportedUnits : [ 'px', 'mm', 'cm', 'in' ,'pt' ],
     _unitValues : null,
 
     _calculateDimensions : function() {
@@ -80,6 +80,18 @@ Y.mix(Dimension.prototype, {
         }
 
         return this;
+    },
+
+    getMeasureUnit : function() {
+        return this._unit;
+    },
+
+    getNumericValue : function() {
+        return this._fromPixels(this._pixels, this._unit);
+    },
+
+    getPixels : function() {
+        return this._pixels;
     },
 
     _fromPixels : function(pixels, unit) {
