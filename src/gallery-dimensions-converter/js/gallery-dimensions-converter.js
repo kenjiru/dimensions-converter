@@ -55,7 +55,9 @@ Y.mix(Dimension.prototype, {
     },
 
     convertTo : function(unit) {
-        return this._fromPixels(this._pixels, unit) + unit;
+        var stringValue = this._fromPixels(this._pixels, unit) + unit;
+
+        return new Dimension(stringValue);
     },
 
     add : function(value) {
