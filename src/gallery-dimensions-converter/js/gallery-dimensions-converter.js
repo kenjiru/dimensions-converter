@@ -84,6 +84,12 @@ Y.mix(Dimension.prototype, {
         return this;
     },
 
+    divide : function(byWhat) {
+        var dividedUnits = this._fromPixels(this._pixels / byWhat, this._unit);
+
+        return new Dimension(dividedUnits + this._unit);
+    },
+
     getMeasureUnit : function() {
         return this._unit;
     },
