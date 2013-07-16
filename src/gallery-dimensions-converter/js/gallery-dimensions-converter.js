@@ -1,13 +1,15 @@
 var Dimension = function(value) {
-    var unit = value.slice(-2);
-
     if (!Dimension._unitValues) {
         Dimension._unitValues = Dimension._calculateDimensions();
     }
 
-    this._value = value;
-    this._unit = unit;
-    this._pixels = this._toPixels(value);
+    if (this._isNumber(value)) {
+        this._unit = 'px';
+        this._pixels = value;
+    } else {
+        this._unit = value.slice(-2);
+        this._pixels = this._toPixels(value);
+    }
 };
 
 // static methods
@@ -49,8 +51,6 @@ Y.mix(Dimension.prototype, {
     toString : function() {
         if (this._pixels !== null) {
             return this._fromPixels(this._pixels, this._unit) + this._unit;
-        } else {
-            return this._value;
         }
     },
 
@@ -101,8 +101,15 @@ Y.mix(Dimension.prototype, {
     },
 
     _toPixels : function(value) {
-        var vNumber = value.slice(0, -2),
-            vUnit = value.slice(-2);
+        var vNumber,
+            vUnit;
+
+        if (this._isNumber(value)) {
+            return value;
+        }
+
+        vNumber = value.slice(0, -2),
+        vUnit = value.slice(-2);
 
         if (!this._isUnitSupported(vUnit)) {
             throw new Error('unit not supported!');
