@@ -144,7 +144,7 @@ Y.mix(Dimension.prototype, {
     },
 
     _isNumber : function(value) {
-        return value && !isNaN(value) && /^\d*\.{0,1}\d*$/.test(value);
+        return value && !isNaN(value) && /^\-*\d*\.{0,1}\d*$/.test(value);
     },
 
     _isArray : function(value) {
