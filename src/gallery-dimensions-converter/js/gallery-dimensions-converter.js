@@ -5,7 +5,7 @@ var Dimension = function(value) {
 
     if (this._isNumber(value)) {
         this._unit = 'px';
-        this._pixels = parseInt(value, 10);
+        this._pixels = parseFloat(value);
     } else {
         this._unit = value.slice(-2);
         this._pixels = this._toPixels(value);
@@ -103,7 +103,7 @@ Y.mix(Dimension.prototype, {
     },
 
     _fromPixels : function(pixels, unit) {
-        pixels = parseInt(pixels, 10);
+        pixels = parseFloat(pixels);
 
         return pixels / Dimension._unitValues[unit];
     },
@@ -127,7 +127,8 @@ Y.mix(Dimension.prototype, {
             throw new Error('value is not a number!');
         }
 
-        vNumber = parseInt(vNumber, 10);
+        vNumber = parseFloat(vNumber);
+
 
         if (vUnit == 'px'){
             return vNumber;
