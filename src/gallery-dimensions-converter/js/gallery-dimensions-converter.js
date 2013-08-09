@@ -32,10 +32,11 @@ Y.mix(Dimension, {
 
         for (var i = 0; i<unitNames.length; i++) {
             unitName = unitNames[i];
-            dimNode.setStyle('width', 1 + unitName);
+            dimNode.setStyle('width', 100 + unitName);
 
             unitValue = dimNode.getComputedStyle('width');
-            unitValues[unitName] = parseFloat(unitValue);
+            unitValue = parseFloat(unitValue) / 100;
+            unitValues[unitName] = unitValue;
         }
 
         return unitValues;
@@ -103,9 +104,12 @@ Y.mix(Dimension.prototype, {
     },
 
     _fromPixels : function(pixels, unit) {
-        pixels = parseFloat(pixels);
+        var value;
 
-        return pixels / Dimension._unitValues[unit];
+        pixels = parseFloat(pixels);
+        value = pixels / Dimension._unitValues[unit];
+
+        return value.toFixed(2);
     },
 
     _toPixels : function(value) {
